@@ -6,24 +6,40 @@ Built step-by-step with a strong focus on security, clean architecture, and real
 🚀 Features
 
 ✅ JWT Access Tokens
+
 ✅ Refresh Token flow (DB-backed, one per user)
+
 ✅ Role-based authorization (ADMIN / USER)
+
 ✅ Secure Logout (refresh token invalidation)
+
 ✅ Spring Security custom filter chain
+
 ✅ Stateless authentication
+
 ✅ Global exception handling
+
 ✅ Initial data seeding
+
 ✅ Hardened security configuration
+
 
 🛠️ Tech Stack
 
 Java 17
+
 Spring Boot
+
 Spring Security
+
 JWT (io.jsonwebtoken)
+
 Spring Data JPA / Hibernate
+
 H2 In-Memory Database
+
 Maven
+
 
 🏗️ Architecture Overview
 Controller → Service → Repository → Database
