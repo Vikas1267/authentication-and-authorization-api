@@ -1,203 +1,221 @@
-🔐 Authentication & Authorization API
+# 🛡️ Authentication & Authorization API
 
-A production-ready Spring Boot authentication and authorization service implementing JWT-based security, refresh tokens, role-based access control, and secure logout handling.
-Built step-by-step with a strong focus on security, clean architecture, and real-world backend practices.
+A **production-ready Spring Boot Authentication and Authorization service**, implementing secure JWT based auth, refresh token flow, role-based access control, and logout handling — deployed on AWS EC2.
 
-🚀 Features
+🔗 Repo: https://github.com/Vikas1267/authentication-and-authorization-api :contentReference[oaicite:0]{index=0}
 
-✅ JWT Access Tokens
+---
 
-✅ Refresh Token flow (DB-backed, one per user)
+## 🚀 Project Overview
 
-✅ Role-based authorization (ADMIN / USER)
+This API serves as a robust backbone for modern applications requiring:
 
-✅ Secure Logout (refresh token invalidation)
+- 🔑 **JWT Authentication**
+- 🔄 **Refresh Tokens**
+- 👤 **Role-Based Authorization**
+- 🔒 **Secure Logout**
+- 📜 **Swagger/OpenAPI Documentation**
+- 🧱 Stateless and secure Spring Security setup
 
-✅ Spring Security custom filter chain
+Built with **clean layered architecture** and security best practices in mind.
 
-✅ Stateless authentication
+---
 
-✅ Global exception handling
+## 📌 Features
 
-✅ Initial data seeding
+✨ **Authentication**
+- Login with username/password
+- Returns `accessToken` & `refreshToken`
 
-✅ Hardened security configuration
+🔁 **Refresh Token Flow**
+- Issue new access tokens using refresh tokens
 
-🛠️ Tech Stack
+🔐 **Authorization**
+- Role-based access control (e.g., ADMIN / USER)
+- Protected endpoints require token
 
-Java 17
+🚪 **Secure Logout**
+- Invalidate refresh tokens
+- Stateless session
 
-Spring Boot
+🛠 **Security Hardened**
+- JWT validation on every request
+- Spring Security custom filter
+- Stateless session
 
-Spring Security
+📜 **Documentation**
+- Fully documented with Swagger UI
 
-JWT (io.jsonwebtoken)
+---
 
-Spring Data JPA / Hibernate
+## 🧱 Tech Stack
 
-H2 In-Memory Database
+| Layer | Technology |
+|-------|------------|
+| Language | Java 17 |
+| Framework | Spring Boot |
+| Security | Spring Security + JWT |
+| Persistence | Spring Data JPA + H2 |
+| API Docs | Swagger / OpenAPI |
+| Build | Maven |
 
-Maven
+---
 
-🏗️ Architecture Overview
-Controller → Service → Repository → Database
-        ↓
-   Spring Security Filter (JWT)
+## 📌 Architecture
 
+Client
+└─> POST /auth/login
+↓
+JWT Access Token + Refresh Token
+↓
+Protected APIs <-- Spring Security (JWT Filter)
 
-JwtAuthenticationFilter validates access tokens
+yaml
+Copy code
 
-RefreshTokenService manages refresh tokens lifecycle
+- Controller → Service → Repository
+- JWT Filter → Enforces stateless authentication
 
-SecurityConfig enforces stateless security
+---
 
-Role-based access control via authorities
+## 📍 API Endpoints
 
-📌 API Endpoints
-🔑 Login
+### 🔐 Authentication
 
-POST /auth/login
-
+**POST /auth/login**
 {
-  "username": "admin",
-  "password": "admin"
+"username": "admin",
+"password": "admin"
 }
 
-
-Response
-
+css
+Copy code
+🟢 Response:
+json
 {
   "accessToken": "jwt-access-token",
   "refreshToken": "refresh-token"
 }
-
-🔄 Refresh Token
-
+🔄 Token Refresh
 POST /auth/refresh
 
+json
+Copy code
 {
   "refreshToken": "refresh-token"
 }
+🟢 Response:
 
-
-Response
-
+json
+Copy code
 {
-  "accessToken": "new-jwt-access-token",
+  "accessToken": "new-jwt-token",
   "refreshToken": "same-refresh-token"
 }
-
 🚪 Logout
+POST /auth/logout
 
-POST /auth/logout?username=admin
+makefile
+Copy code
+Authorization: Bearer <JWT>
+🟢 Invalidates the user’s refresh token
 
-Requires Authorization: Bearer <access-token>
+👤 Protected APIs
+GET /user/profile
 
-Invalidates the user’s refresh token
+Requires valid JWT
 
-Response
+GET /admin/dashboard
 
-Logged out successfully
+Requires ADMIN role
 
-🔐 Security Highlights
+🛠 Running Locally
+Clone:
 
-Stateless session management
+bash
+Copy code
+git clone https://github.com/Vikas1267/authentication-and-authorization-api.git
+cd authentication-and-authorization-api
+Build:
 
-JWT validation on every request
+bash
+Copy code
+mvn clean package
+Run:
 
-Refresh tokens stored securely in DB
+bash
+Copy code
+java -jar target/authservice-0.0.1-SNAPSHOT.jar
+🟢 App will run at
 
-One refresh token per user
+arduino
+Copy code
+http://localhost:8080
+📖 Swagger UI
+Interactive API docs available at:
 
-Token expiry validation
+bash
+Copy code
+http://localhost:8080/swagger-ui/index.html
+👉 Use the Authorize button to paste your JWT:
 
-Proper HTTP status handling (401 / 403)
+php-template
+Copy code
+Bearer <accessToken>
+📌 Deployed Version (AWS EC2)
+Deployed at:
 
-No sensitive data exposed
+cpp
+Copy code
+http://<YOUR_EC2_PUBLIC_IP>:8080
+Swagger:
 
+arduino
+Copy code
+http://<YOUR_EC2_PUBLIC_IP>:8080/swagger-ui/index.html
 🧪 Testing the API
+Use any API client (Postman / Swagger) to perform:
 
-You can test all endpoints using Postman.
+Login → get JWT
 
-📸 Screenshots included below show:
+Authorize in Swagger
 
-Successful login
+Call protected endpoints
 
-Token refresh
+💡 Remember to prefix JWT with:
 
-Logout flow
-
-403 handling during invalid access
-
-(Add your screenshots below using GitHub’s image upload)
-
-## 📷 Screenshots
-
-[Swagger]
-<img width="1909" height="991" alt="Screenshot 2026-01-20 235352" src="https://github.com/user-attachments/assets/52a67ccd-1585-4686-b406-cf80c5afcd9c" />
-
-[Swagger api docs]
-<img width="1919" height="514" alt="Screenshot 2026-01-20 235456" src="https://github.com/user-attachments/assets/48b2a57b-8635-4166-9b5d-ce9f9bdd29e7" />
-
-
-[Login Success]
-<img width="914" height="765" alt="Screenshot 2026-01-10 225221" src="https://github.com/user-attachments/assets/b8e5478d-7d8f-4cc8-bd7b-227037b49b60" />
-
-[Refresh Token]
-<img width="971" height="835" alt="Screenshot 2026-01-12 111233" src="https://github.com/user-attachments/assets/ef24e43a-bcf3-432e-ac55-ecdba11828fe" />
-
-[Logout]
-<img width="918" height="771" alt="Screenshot 2026-01-12 203651" src="https://github.com/user-attachments/assets/23060b21-0899-4359-84d2-a96ede2794f6" />
-
-
-▶️ How to Run Locally
-./mvnw spring-boot:run
-
-
-App runs on http://localhost:8080
-
-H2 console enabled for local testing
-
-No external setup required
-
-📂 Project Structure
+php-template
+Copy code
+Bearer <token>
+📁 Project Structure
+bash
+Copy code
 src/main/java/com/vikas/authservice
-├── controller
-├── service
-├── repository
-├── security
-├── entity
-├── dto
-├── exception
-└── config
+├── config            # OpenAPI + security configs
+├── controller        # API controllers
+├── service           # Business logic
+├── repository        # DB access
+├── security          # JWT and Spring Security
+├── entity            # Models / Entities
+└── exception         # Custom global handlers
+📈 What You’ll Learn
+Real-world Spring Security
 
-🧠 Learning Outcomes
+Stateless JWT authentication design
 
-This project demonstrates:
+Secure refresh token flow
 
-Real-world Spring Security configuration
+Role based access patterns
 
-Proper JWT + refresh token design
+OpenAPI documentation and secure endpoints
 
-Backend security hardening
-
-Clean layered architecture
-
-Debugging and fixing 403 / authentication issues
-
-📌 Future Improvements
-
-Token blacklist for access tokens
-
-Redis-backed refresh tokens
-
-Docker & Docker Compose
-
-Swagger / OpenAPI documentation
-
-Integration with microservices
+📦 Future Improvements
+✔ Add RDBMS (MySQL / PostgreSQL)
+✔ Docker & Docker-Compose setup
+✔ HTTPS / Nginx setup
+✔ Redis-backed refresh token store
+✔ Token blacklist for access tokens
 
 👨‍💻 Author
-
-Omvikas
+Omvikas Indla
 Backend Developer | Java | Spring Boot | Security
