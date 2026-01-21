@@ -1,199 +1,111 @@
-🔐 Authentication & Authorization API
-Secure JWT-based Auth Service | Spring Boot | AWS EC2
+# 🔐 Authentication & Authorization API (Spring Boot)
 
-A production-ready Authentication & Authorization REST API built using Spring Boot and Spring Security, implementing JWT-based authentication, role-based authorization, and secure API access.
-The service is fully deployed on AWS EC2 and documented using Swagger (OpenAPI 3).
+A production-ready **Authentication & Authorization backend service** built using **Spring Boot, Spring Security, JWT**, and **H2/PostgreSQL**, deployed on **AWS EC2**.
 
-This project demonstrates real-world backend engineering practices, not just local development.
+This service provides secure login, token-based authentication, role-based access control, and protected APIs — designed to be used as a standalone auth microservice or integrated into larger systems.
 
-🚀 Live Deployment
+---
 
-Base URL:
+## 🚀 Live Deployment
 
-http://<EC2_PUBLIC_IP>:8080
+- 🌐 **Base URL**: http://13.60.20.109:8080  
+- 📘 **Swagger UI**: http://13.60.20.109:8080/swagger-ui/index.html  
+- ❤️ **Health Check**: http://13.60.20.109:8080/health  
 
+> ⚠️ Note: Hosted on AWS EC2 (t3.micro). Cold start may take a few seconds.
 
-Swagger UI:
+---
 
-http://<EC2_PUBLIC_IP>:8080/swagger-ui/index.html
+## 🧩 Features
 
+- User authentication using **JWT (Access + Refresh Tokens)**
+- Secure login and logout flow
+- Token refresh mechanism
+- Role-based authorization
+- Protected APIs using Spring Security filters
+- Centralized exception handling
+- Swagger/OpenAPI documentation
+- Health check endpoint
+- Deployed and managed on AWS EC2 using systemd
 
-Health Check:
+---
 
-GET /health
+## 🛠 Tech Stack
 
-🧠 What This Project Solves
+- **Backend**: Java 17, Spring Boot
+- **Security**: Spring Security, JWT
+- **Database**: H2 (in-memory) / PostgreSQL-ready
+- **Build Tool**: Maven
+- **API Docs**: Swagger (OpenAPI 3)
+- **Deployment**: AWS EC2 (Linux), systemd
+- **Server**: Embedded Tomcat
 
-Secure user authentication using JWT
+---
 
-Role-based authorization (USER, ADMIN)
+## 🔑 API Endpoints Overview
 
-Stateless session management
+### Authentication
+| Method | Endpoint        | Description |
+|------|----------------|------------|
+| POST | `/auth/login`   | Authenticate user & generate tokens |
+| POST | `/auth/refresh` | Refresh access token |
+| POST | `/auth/logout`  | Invalidate refresh token |
 
-Token refresh mechanism
+### Protected APIs
+| Method | Endpoint        | Description |
+|------|----------------|------------|
+| GET  | `/user/profile` | Fetch authenticated user profile |
 
-Centralized API documentation
+### Utility
+| Method | Endpoint |
+|------|----------|
+| GET  | `/health` |
 
-Cloud deployment (AWS EC2)
+---
 
-This API can be plugged directly into:
+## 🔒 Authentication Flow
 
-Frontend applications (React / Angular / Mobile apps)
+1. User logs in via `/auth/login`
+2. Server returns **JWT Access Token + Refresh Token**
+3. Client sends `Authorization: Bearer <access_token>` for protected APIs
+4. Access token expiry handled via `/auth/refresh`
 
-Microservices architectures
+---
 
-E-commerce / SaaS platforms
+## 🧪 Running Locally
 
-🏗️ Architecture Overview
-Client
-  ↓
-Auth Controller (/auth/login)
-  ↓
-JWT Generation
-  ↓
-Spring Security Filter Chain
-  ↓
-Protected APIs (/user/**, /admin/**)
-
-
-Stateless authentication
-
-JWT validated on every request
-
-No server-side session storage
-
-🔑 Authentication Flow (JWT)
-
-User logs in with credentials
-
-Server returns:
-
-accessToken
-
-refreshToken
-
-Client sends token as:
-
-Authorization: Bearer <access_token>
-
-
-Spring Security validates JWT for protected routes
-
-📌 API Endpoints
-🔐 Authentication
-Method	Endpoint	Description
-POST	/auth/login	Authenticate user & get JWT
-POST	/auth/refresh	Refresh access token
-POST	/auth/logout	Logout user
-👤 User
-Method	Endpoint	Access
-GET	/user/profile	Authenticated users
-🛡️ Admin
-Method	Endpoint	Access
-GET	/admin/dashboard	ADMIN role only
-❤️ Health
-Method	Endpoint
-GET	/health
-🧪 Testing with Swagger UI
-
-Open Swagger UI
-
-Call /auth/login
-
-Copy the accessToken
-
-Click Authorize 🔓
-
-Paste:
-
-Bearer <accessToken>
-
-
-Access protected APIs
-
-🛠️ Tech Stack
-
-Java 17
-
-Spring Boot 3
-
-Spring Security
-
-JWT (JSON Web Tokens)
-
-Spring Data JPA
-
-H2 Database (can be replaced with PostgreSQL/MySQL)
-
-Swagger / OpenAPI 3
-
-Maven
-
-AWS EC2
-
-Linux (Amazon Linux 2023)
-
-📂 Project Structure
-src/main/java/com/vikas/authservice
-├── config        # OpenAPI & app configs
-├── controller    # REST controllers
-├── security      # JWT & Spring Security
-├── service       # Business logic
-├── repository    # Data access layer
-├── entity        # JPA entities
-├── dto           # Request/Response models
-└── exception     # Global exception handling
-
-▶️ Run Locally
-git clone https://github.com/Vikas1267/authentication-and-authorization-api.git
-cd authentication-and-authorization-api
+```bash
+git clone https://github.com/your-username/authservice.git
+cd authservice
 mvn clean package
 java -jar target/authservice-0.0.1-SNAPSHOT.jar
+Access Swagger:
 
-
-App runs at:
-
-http://localhost:8080
-
+bash
+Copy code
+http://localhost:8080/swagger-ui/index.html
 ☁️ Deployment Details
+Hosted on AWS EC2 (Amazon Linux 2023)
 
-Hosted on AWS EC2
+Application managed via systemd
 
-Runs as a standalone JAR
+JVM memory optimized for low-resource instance
 
-Managed using nohup
+Swap configured for stability on t3.micro
 
-Open ports configured via EC2 Security Groups
+📌 Future Improvements
+User registration endpoint
 
-Designed for easy extension with:
+Persistent database (PostgreSQL/RDS)
 
-Nginx
+Redis-based token blacklist
 
-HTTPS (SSL)
+Rate limiting
 
-Docker
+Docker & CI/CD pipeline
 
-RDS (PostgreSQL/MySQL)
+HTTPS with Nginx + SSL
 
-🎯 Key Learnings & Highlights
-
-Implemented JWT authentication from scratch
-
-Deep understanding of Spring Security filter chain
-
-Debugged real production issues:
-
-Port conflicts
-
-Authorization failures
-
-Token validation
-
-Hands-on AWS EC2 deployment
-
-Swagger secured with Bearer Authentication
-
-👨‍💻 Author
-
+👤 Author
 Vikas Indla
-Backend Engineer | Java | Spring Boot
+Backend Developer | Spring Boot | REST APIs | AWS
