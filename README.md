@@ -7,14 +7,32 @@ This service provides secure login, token-based authentication, role-based acces
 ---
 
 ## 🚀 Live Deployment
-
-- 🌐 **Base URL**: http://13.60.20.109:8080  
+  
 - 📘 **Swagger UI**: http://13.60.20.109:8080/swagger-ui/index.html  
 - ❤️ **Health Check**: http://13.60.20.109:8080/health  
 
 > ⚠️ Note: Hosted on AWS EC2 (t3.micro). Cold start may take a few seconds.
 
 ---
+## Screenshots : 
+
+[AWS instance]
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/057b7306-023f-4d9b-89be-29b554cb6ec7" />
+
+[JWT token]
+<img width="977" height="777" alt="Screenshot 2026-01-08 222425" src="https://github.com/user-attachments/assets/c3a6ab53-f11b-437c-9724-58fe78be0ae1" />
+
+[Admin dashboard]
+<img width="939" height="691" alt="Screenshot 2026-01-09 222638" src="https://github.com/user-attachments/assets/9429ee31-f4d6-4101-a2be-26f686e209e9" />
+
+[GET Method]
+<img width="930" height="819" alt="Screenshot 2026-01-10 223319" src="https://github.com/user-attachments/assets/8657a4e6-a1eb-4ea4-9cea-fe33f7a1a742" />
+
+[Access and Refresh Tokens]
+<img width="893" height="829" alt="Screenshot 2026-01-12 090002" src="https://github.com/user-attachments/assets/51ca017e-f84a-4f8a-869b-1de724a77f38" />
+
+
+
 
 ## 🧩 Features
 
@@ -74,15 +92,15 @@ This service provides secure login, token-based authentication, role-based acces
 
 ## 🧪 Running Locally
 
-```bash
-git clone https://github.com/your-username/authservice.git
-cd authservice
-mvn clean package
-java -jar target/authservice-0.0.1-SNAPSHOT.jar
+bash
+
+1.git clone https://github.com/your-username/authservice.git
+2.cd authservice
+3.mvn clean package
+4.java -jar target/authservice-0.0.1-SNAPSHOT.jar
+
 Access Swagger:
 
-bash
-Copy code
 http://localhost:8080/swagger-ui/index.html
 ☁️ Deployment Details
 Hosted on AWS EC2 (Amazon Linux 2023)
@@ -108,4 +126,4 @@ HTTPS with Nginx + SSL
 
 👤 Author
 Vikas Indla
-Backend Developer | Spring Boot | REST APIs | AWS
+Backend Engineer | Spring Boot | REST APIs | AWS
