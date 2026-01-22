@@ -110,81 +110,81 @@ Step 1: Open Swagger UI
 
 Go to:
 
-http://13.60.20.109:8080/swagger-ui/index.html
+**Link** : http://13.60.20.109:8080/swagger-ui/index.html
 
 Step 2: Login (Get JWT Token)
 
-Expand POST /auth/login
+* Expand POST /auth/login
 
-Click Try it out
+* Click Try it out
 
-Enter request body in JSON format:
+* Enter request body in JSON format:
 
 {
 
-  "email": "test@gmail.com",
-  "password": "password"
+  "username": "admin",
+  
+  "password": "admin"
+  
   
 }
 
 
-Click Execute
+* Click Execute
 
-Copy the accessToken from the response
+* Copy the accessToken from the response
 
 Step 3: Authorize (Set Bearer Token)
 
-Click Authorize (🔒 button at top right)
+* Click Authorize (🔒 button at top right)
 
-Paste the token in this format:
-
-Bearer <your_access_token_here>
+*Paste the access token in the box:
 
 
-Click Authorize
+* Click Authorize
 
-Close the dialog
+* Close the dialog
 
 ✅ You are now authenticated for all protected APIs.
 
 Step 4: Access Protected APIs
 
-After authorization:
+* After authorization:
 
-Open any secured endpoint (🔒 icon)
+* Open any secured endpoint (🔒 icon)
 
-Click Try it out
+* Click Try it out
 
-Click Execute
+* Click Execute
 
 Example:
 
 GET /user/profile
 
 
-If the token is valid, the request will succeed.
+you'll get 200 or succeed Response
 
 Step 5: Logout (Optional)
 
 To invalidate the session:
 
-Use POST /auth/logout
+* Use POST /auth/logout
 
-Execute while authenticated
+* Execute while authenticated
 
-Token will no longer be valid
+*Token will no longer be valid
 
-Token Refresh (When Access Token Expires)
+* Token Refresh (When Access Token Expires)
 
-If access token expires:
+* If access token expires:
 
-Call POST /auth/refresh
+* Call POST /auth/refresh
 
-Use refresh token
+* Use refresh token
 
-Receive a new access token
+* Receive a new access token
 
-Re-authorize in Swagger
+* Re-authorize in Swagger
 
 🧠 Usage Pattern (General Rule)
 
@@ -204,7 +204,7 @@ Mobile app
 
 Access Swagger:
 
-http://localhost:8080/swagger-ui/index.html
+**http://localhost:8080/swagger-ui/index.html**
 
 ☁️ Deployment Details
 Hosted on AWS EC2 (Amazon Linux 2023)
