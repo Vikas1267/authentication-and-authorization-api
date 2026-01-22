@@ -8,9 +8,9 @@ This service provides secure login, token-based authentication, role-based acces
 
 ## 🚀 Live Deployment
   
-- 📘 **Swagger UI**: http://13.60.20.109:8080/swagger-ui/index.html  
-- ❤️ **Health Check**: http://13.60.20.109:8080/health  
-- 📘 **Api docs** : http://13.60.20.109:8080/v3/api-docs
+- 📘 **Swagger UI**: http://51.21.192.193:8080/swagger-ui/index.html  
+- ❤️ **Health Check**: http://51.21.192.193:8080/health  
+- 📘 **Api docs** : http://51.21.192.193:8080/v3/api-docs
 
 > ⚠️ Note: Hosted on AWS EC2 (t3.micro). Cold start may take a few seconds.
 
@@ -114,7 +114,7 @@ Step 1: Open Swagger UI
 
 Go to:
 
-**Link** : http://13.60.20.109:8080/swagger-ui/index.html
+**Link** : http://51.21.192.193:8080/swagger-ui/index.html
 
 Step 2: Login (Get JWT Token)
 
