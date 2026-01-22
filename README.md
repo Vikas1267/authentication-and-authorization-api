@@ -100,9 +100,110 @@ bash
 3.mvn clean package
 4.java -jar target/authservice-0.0.1-SNAPSHOT.jar
 
+---
+
+🔐 How to Use the API (via Swagger UI)
+
+This API is designed to be tested directly from Swagger UI.
+
+Step 1: Open Swagger UI
+
+Go to:
+
+http://13.60.20.109:8080/swagger-ui/index.html
+
+Step 2: Login (Get JWT Token)
+
+Expand POST /auth/login
+
+Click Try it out
+
+Enter request body in JSON format:
+
+{
+  "email": "test@gmail.com",
+  "password": "password"
+}
+
+
+Click Execute
+
+Copy the accessToken from the response
+
+Step 3: Authorize (Set Bearer Token)
+
+Click Authorize (🔒 button at top right)
+
+Paste the token in this format:
+
+Bearer <your_access_token_here>
+
+
+Click Authorize
+
+Close the dialog
+
+✅ You are now authenticated for all protected APIs.
+
+Step 4: Access Protected APIs
+
+After authorization:
+
+Open any secured endpoint (🔒 icon)
+
+Click Try it out
+
+Click Execute
+
+Example:
+
+GET /user/profile
+
+
+If the token is valid, the request will succeed.
+
+Step 5: Logout (Optional)
+
+To invalidate the session:
+
+Use POST /auth/logout
+
+Execute while authenticated
+
+Token will no longer be valid
+
+Token Refresh (When Access Token Expires)
+
+If access token expires:
+
+Call POST /auth/refresh
+
+Use refresh token
+
+Receive a new access token
+
+Re-authorize in Swagger
+
+🧠 Usage Pattern (General Rule)
+
+Login → Copy Token → Authorize → Call Protected APIs → Logout / Refresh
+
+This same flow applies whether you use:
+
+Swagger UI
+
+Postman
+
+Frontend application
+
+Mobile app
+
+---
+
 Access Swagger:
 
 http://localhost:8080/swagger-ui/index.html
+
 ☁️ Deployment Details
 Hosted on AWS EC2 (Amazon Linux 2023)
 
