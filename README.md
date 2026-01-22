@@ -96,9 +96,13 @@ This service provides secure login, token-based authentication, role-based acces
 bash
 
 1.git clone https://github.com/your-username/authservice.git
+
 2.cd authservice
+
 3.mvn clean package
+
 4.java -jar target/authservice-0.0.1-SNAPSHOT.jar
+
 
 ---
 
@@ -205,6 +209,7 @@ Mobile app
 Access Swagger:
 
 **http://localhost:8080/swagger-ui/index.html**
+---
 
 ☁️ Deployment Details
 Hosted on AWS EC2 (Amazon Linux 2023)
@@ -229,5 +234,7 @@ Docker & CI/CD pipeline
 HTTPS with Nginx + SSL
 
 👤 Author
+
 Vikas Indla
+
 Backend Engineer | Spring Boot | REST APIs | AWS
