@@ -121,8 +121,10 @@ Click Try it out
 Enter request body in JSON format:
 
 {
+
   "email": "test@gmail.com",
   "password": "password"
+  
 }
 
 
