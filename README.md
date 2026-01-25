@@ -208,7 +208,7 @@ Mobile app
 
 Access Swagger:
 
-**http://localhost:8080/swagger-ui/index.html**
+**http://51.21.192.193:8080/swagger-ui/index.html**
 ---
 
 ☁️ Deployment Details
