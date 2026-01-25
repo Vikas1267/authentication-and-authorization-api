@@ -96,6 +96,7 @@ This service provides secure login, token-based authentication, role-based acces
 bash
 
 1.git clone https://github.com/Vikas1267/authentication-and-authorization-api.git
+(rename root folder to authservice)
 
 2.cd authservice
 
