@@ -86,7 +86,7 @@ This service provides secure login, token-based authentication, role-based acces
 
 1. User logs in via `/auth/login`
 2. Server returns **JWT Access Token + Refresh Token**
-3. Client sends `Authorization: Bearer <access_token>` for protected APIs
+3. Client sends `Authorization: <access_token>` for protected APIs
 4. Access token expiry handled via `/auth/refresh`
 
 ---
