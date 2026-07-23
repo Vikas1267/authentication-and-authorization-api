@@ -12,7 +12,7 @@ This service provides secure login, token-based authentication, role-based acces
 - ❤️ **Health Check**: http://51.21.192.193:8080/health  
 - 📘 **Api docs** : http://51.21.192.193:8080/v3/api-docs
 
-> ⚠️ Note: AWS has recently removed my instance due to billing issues
+> ⚠️ Note: AWS has recently removed my instance due to billing issues.
 > Link wont Work for now.
 
 ---
